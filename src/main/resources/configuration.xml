@@ -1,0 +1,19 @@
+<?xml version ="1.0" encoding ="UTF-8" ?>
+<configuration>
+    <database>
+        <host>localhost</host>
+        <port>3306</port>
+        <user>root</user>
+        <pwd></pwd>
+    </database>
+    <admin>
+        <nom>HAÏDARA</nom>
+        <prenom>Moulaye</prenom>
+        <adresse>
+            <numero>25</numero>
+            <rue>rue du King</rue>
+            <cp>34790</cp>
+            <ville>Grabels</ville>
+        </adresse>
+    </admin>
+</configuration>

@@ -1,18 +1,19 @@
-package fr.diginamic.props;
+package fr.diginamic.xml;
 
-import org.apache.commons.configuration2.Configuration;
+import org.apache.commons.configuration2.XMLConfiguration;
 import org.apache.commons.configuration2.builder.fluent.Configurations;
+import org.apache.commons.configuration2.ex.ConfigurationException;
+import org.json.XML;
 
 import java.util.Iterator;
 
-public class TestConfigurationProps {
+public class TestConfigurationXML {
+
     public static void main(String[] args) {
         Configurations configs = new Configurations();
         try {
-            Configuration config = configs.properties("configuration.properties");
-            /*Configuration config = configs.properties("configuration.properties");
-            System.out.println(config.getString("nom"));
-            System.out.println(config.getString("prenom"));*/
+            XMLConfiguration config = configs.xml("configuration.xml");
+            System.out.println("Premier param fichier config " + config.getString("database(0).host"));
             Iterator<String> it = config.getKeys();
 
             while (it.hasNext()){
@@ -20,11 +21,7 @@ public class TestConfigurationProps {
                 System.out.println(key + " -> " + config.getString(key));
 
             }
-
-
-        }
-        catch(Exception e )
-        {
+        } catch (ConfigurationException e) {
             e.printStackTrace();
         }
     }
