@@ -1,33 +1,22 @@
 package fr.diginamic.jdbc;
 
+import fr.diginamic.jdbc.dao.FournisseurDaoJdbc;
+import fr.diginamic.jdbc.entites.Fournisseur;
 import org.mariadb.jdbc.Driver;
 
 import java.sql.*;
+import java.util.List;
 
 public class TestUpdate {
     public static void main(String[] args) {
-        Connection connection = null;
-        Statement statement = null;
-        try {
-            DriverManager.registerDriver(new Driver());
-            connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/compta2", "root", "");
-            statement = connection.createStatement();
-            // Mise à jour fournisseur
-            int nbLignes = statement.executeUpdate("UPDATE fournisseur SET nom = 'La Maison des Peintures' WHERE nom = 'La Maison de la Peinture'");
-            System.out.println("Nombre de ligne mise à jour : " + nbLignes);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }finally {
-            try {
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.err.println("Problème de fermeture des ressources :" + e.getMessage());
-            }
+
+        FournisseurDaoJdbc fournisseurDaoJdbc = new FournisseurDaoJdbc();
+        //Mise à jour fournisseur maison de la Peinture;
+        fournisseurDaoJdbc.update("La maison de la Peinture", "La maison des Peintures");
+        //Affichage list fournisseurs
+        List<Fournisseur> listeFournisseurs = fournisseurDaoJdbc.extraire();
+        for (Fournisseur fournisseur : listeFournisseurs) {
+            System.out.println(fournisseur);
         }
 
     }

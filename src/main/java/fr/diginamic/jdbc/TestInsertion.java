@@ -1,35 +1,24 @@
 package fr.diginamic.jdbc;
 
+import fr.diginamic.jdbc.dao.FournisseurDaoJdbc;
+import fr.diginamic.jdbc.entites.Fournisseur;
 import org.mariadb.jdbc.Driver;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestInsertion {
     public static void main(String[] args) {
-        Connection connection = null;
-        Statement statement = null;
-        try {
-            DriverManager.registerDriver(new Driver());
-            connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/compta2", "root", "");
-            statement = connection.createStatement();
-            // Creation nouveau fournisseur
-            int nbLignes = statement.executeUpdate("INSERT INTO fournisseur(nom) Values('La Maison de la Peinture')");
-            System.out.println("Nombre de ligne insérées : " + nbLignes);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }finally {
-            try {
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.err.println("Problème de fermeture des ressources :" + e.getMessage());
-            }
-        }
 
+        FournisseurDaoJdbc fournisseurDaoJdbc = new FournisseurDaoJdbc();
+        //Insertion nouveau fournisseur;
+        fournisseurDaoJdbc.insert(new Fournisseur(4, "« L’Espace Création »"));
+        //Affichage list fournisseurs
+        List<Fournisseur> listeFournisseurs = fournisseurDaoJdbc.extraire();
+        for (Fournisseur fournisseur : listeFournisseurs) {
+            System.out.println(fournisseur);
+        }
     }
 
 }
