@@ -12,7 +12,7 @@ public class TestUpdate {
 
         FournisseurDaoJdbc fournisseurDaoJdbc = new FournisseurDaoJdbc();
         //Mise à jour fournisseur maison de la Peinture;
-        fournisseurDaoJdbc.update("La maison de la Peinture", "La maison des Peintures");
+        fournisseurDaoJdbc.update("La fabrique à pain", "La Fabrique à Pains");
         //Affichage list fournisseurs
         List<Fournisseur> listeFournisseurs = fournisseurDaoJdbc.extraire();
         for (Fournisseur fournisseur : listeFournisseurs) {

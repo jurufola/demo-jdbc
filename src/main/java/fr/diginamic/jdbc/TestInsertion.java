@@ -13,7 +13,7 @@ public class TestInsertion {
 
         FournisseurDaoJdbc fournisseurDaoJdbc = new FournisseurDaoJdbc();
         //Insertion nouveau fournisseur;
-        fournisseurDaoJdbc.insert(new Fournisseur(4, "« L’Espace Création »"));
+        fournisseurDaoJdbc.insert(new Fournisseur(15, "L'etranger"));
         //Affichage list fournisseurs
         List<Fournisseur> listeFournisseurs = fournisseurDaoJdbc.extraire();
         for (Fournisseur fournisseur : listeFournisseurs) {

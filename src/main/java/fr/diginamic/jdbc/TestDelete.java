@@ -11,7 +11,7 @@ public class TestDelete {
     public static void main(String[] args) {
         FournisseurDaoJdbc fournisseurDaoJdbc = new FournisseurDaoJdbc();
         //Suppression fournisseur La maison des Peintures;
-        System.out.println(fournisseurDaoJdbc.delete(new Fournisseur(9, "La maison des Peintures")));
+        System.out.println(fournisseurDaoJdbc.delete(new Fournisseur(9, "0")));
         //Affichage list fournisseurs
         List<Fournisseur> listeFournisseurs = fournisseurDaoJdbc.extraire();
         for (Fournisseur fournisseur : listeFournisseurs) {
